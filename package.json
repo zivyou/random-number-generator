@@ -1,15 +1,14 @@
 {
-  "name": "web-dict",
+  "name": "random-number-generator",
   "version": "1.0.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package": "electron-packager ./ web-dict --platform=darwin --arch=x64 --overwrite",
+    "package": "electron-packager ./ random-number-generator --platform=darwin --arch=x64 --overwrite",
     "pack": "electron-builder --dir",
     "dist": "electron-builder"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
     "Electron",
     "quick",
@@ -23,12 +22,11 @@
     "electron": "^6.0.12",
     "electron-builder": "^21.2.0"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "build": {
-    "appId": "web-dict",
+    "appId": "random-number-generator",
     "mac": {
-        "category": "public.app-category.developer-tools"
+      "category": "public.app-category.developer-tools"
     }
   }
 }

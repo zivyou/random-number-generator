@@ -2,12 +2,69 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>zivyou's web dictionary</title>
+    <title>mtuav-17coding</title>
   </head>
-  <body>
-    <iframe id="bing" title="dictionary" width="1000" height="2000"
-    src="https://www.bing.com/dict">
 
-    </iframe>
+  <body>
+
+    <form id="boxes" style="text-align:center">
+        <input type="button" name="mysubmit" onclick="formSubmit()" value="Submit" />
+        <input type="button" name="stop" onclick="stopChoosing()" value="Stop" />
+    </form>
+
+    <div id="result">
+        <h1 id="resultName"> ^_^ </h1>
+    </div>
+
+    <script src = "jquery.min.js"></script>
+    <script type='text/javascript'> 
+        var inputs = '';
+        var names = ["王翔", "马堃", "景华", "吴凡", "崔书林", "王欣", "焦永其", "李天明", "牛鹏宇", "杨七", "杨善宁", "游资奇", "田国樽"];
+        for (var i=1; i<names.length; i++) {
+            inputs += `<input name="box" type="checkbox" value="${i}" id="${i}"> ${names[i]}`;
+        }
+        //document.getElementById('boxes').insertAdjacentHTML('afterbegin', inputs);
+        var div = document.createElement('div');
+        div.innerHTML = inputs;
+
+        var submit = document.querySelector('#boxes input');
+        submit.parentNode.insertBefore(div, submit);
+
+
+        var luckGuys = [];
+        var sign = false;
+        function formSubmit() {
+            var data = [];
+            $("input:checkbox[name=box]:checked").each(function(){
+                data.push($(this).val());
+            });
+            data.map(function(n) {
+                luckGuys.push(names[parseInt(n, 10)]);
+            });
+
+            sign = true;
+            beginToChoose();
+            console.log(luckGuys);
+        }
+
+        function beginToChoose() {
+            if (sign) {
+                var index = Math.floor(luckGuys.length * Math.random());
+                var display = document.createElement('h3');
+                var newResult = `<h1 id="resultName"> ${luckGuys[index]} </h1>`;
+                $('#resultName').replaceWith(newResult);
+                setTimeout(beginToChoose, 50);
+            }
+        }
+
+        function stopChoosing() {
+            sign = false;
+            $("input:checkbox[name=box]:checked").prop('checked', false);
+            luckGuys = [];
+        }
+    </script>
+
   </body>
 </html>
+
+
