@@ -1,3 +1,9 @@
-# web-dict
+# random-number-generator
 
-A simple electron app. Run Bing dictionary on my Mac-PC.
+A simple electron app. Choose a lucky number from your inputs.
+
+# build
+`npm install`
+
+# run
+npm start
